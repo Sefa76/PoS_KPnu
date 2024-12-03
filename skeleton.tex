@@ -1,0 +1,66 @@
+% Please make sure you insert your
+% data according to the instructions in PoSauthmanual.pdf
+\documentclass[a4paper,11pt]{article}
+\usepackage{pos}
+\usepackage{xspace}
+
+\title{Euclid preparation: sensitivity to neutrino parameters}
+%% \ShortTitle{Short Title for header}
+\newcommand{\euclid}{\textit{Euclid}\xspace}
+\newcommand{\dneff}{\Delta N_\mathrm{eff}}
+\newcommand{\summnu}{\sum m_\nu}
+\newcommand{\threetimestwo}{3$\times$2\,pt}
+\newcommand{\camb}{\texttt{CAMB}\xspace}
+\newcommand{\class}{\texttt{CLASS}\xspace}
+\newcommand{\montepython}{\texttt{MontePython}\xspace}
+\newcommand{\cosmicfish}{\texttt{CosmicFish}\xspace}
+\author*[a]{S.~Pamuk}
+
+\affiliation[a]{Instituto de Física de Cantabria (IFCA) CSIC-Univ. de Cantabria,\\ Avda. de los Castros s/n, E-39005 Santander, Spain}
+
+\emailAdd{pamuk@ifca.unican.es}
+
+\abstract{The European Space Agency has launched its newest mission in July 2023. The Euclid mission is planned to create one of the largest galaxy clustering and weak gravitational lensing survey to its date. The complimentary of a wide photometric redshift galaxy survey and spectroscopic survey will show remarkable compatibility and allow for the measurement of the history of structure formation.\\
+The following presents the newest forecast of \euclid done within the collaboration for the mission's main cosmological probes to see how well future data from \euclid will be able to constrain parameters from Neutrino physics. This forecast is focused on the summed mass of neutrino species $\summnu$, as well as the effective number of additional ultra relativistic species $\dneff$.\\
+We show how the upcoming data could lead to unprecedented sensitivity in these parameters and could, together with data from future cosmic microwave background experiments, be able to have a detection of the neutrino mass scale.}
+
+\FullConference{12th Neutrino Oscillation Workshop (NOW2024)\\
+ 2-8, September 2024\\
+Otranto, Lecce, Italy\\}
+
+%% \tableofcontents
+
+\begin{document}
+\maketitle
+
+
+\section{Background}
+The \euclid mission\cite{euclidcollaboration2024euclidiovervieweuclid} is planned to measure the location and shape of close to a billion galaxies over approximately one third of the sky. With a look back time of roughly ten billion years, \euclid will produce the largest galaxy catalogue to date. The cosmological information that can be obtained from this can be used to measure the cosmological neutrino mass, $\sum m_\nu$, as well as the effective number of additional ultra-relativistic relics, $\Delta N_\mathrm{eff}$.\\
+The effect of these quantities on cosmological observables are described in \cite{ParticleDataGroup:2024cfk, Vagnozzi_2018, ISTF2020}. In the following section, we will briefly introduce these observables.\\
+\newline
+The observable that is mainly constraining the cosmological neutrino mass is the weak lensing (WL) probe.
+The shapes of background (source) galaxies correlate with each other as they are get lensed by the same foreground (lens) galaxies. This correlation can be directly related to the correlation of the underlying matter field. Adding massive neutrinos suppresses this correlation in a scale dependent way, as it slows down the formation of structure for scales where the neutrinos are free-streaming i.e. where they are still to hot to cluster inside of gravitational wells.
+Measuring the WL signal gives a unique method to directly measure the overall amplitude of the matter perturbations   
+
+The next probe of interest is the Galaxy clustering (GC) probe, where we measure the spacial correlation of galaxies. In the standard cosmological model the matter perturbations all originate from primordial perturbations generated during inflation. At early times these perturbations generated pressure waves (acoustic waves) in the tightly coupled radiation matter fluid. These pressure waves are frozen when radiation and matter decoupled at recombination. This creates an excess in the measured correlation function at the size of these acoustic waves (BAO). The size of these waves depends on the expansion history of the universe. Adding additional massless relics through $\dneff$ or changing the fraction of matter that was still relativistic at recombination through $\summnu$ creates a measurable signal in the BAO.
+
+Additionally to the BAO, the amplitude of the GC signal is also given by the underlying matter distribution. As galaxies form in over dense regions an over density in the galaxy distribution is related to the over density in the total matter. Contrary the the WL signal this relation is not a direct correspondence, rather the galaxy field is a bias tracer of the galaxy field. In the linear bias model this relation is modelled through a proportionality constant $b$ called the galaxy bias. Alone the GC probe could only be able to measure the amplitude of matter perturbations times this bias. \euclid will be able to construct the GC power spectrum using photometric redshifts, as well using spectroscopic ones. While the galaxies for which we have measured photometric redshifts will mainly be used after binning them in tomographic redshift bins, the spectroscopic redshift measurements will allow for the computation of the three-dimensional redshift space power spectrum. We denote these two probes as GCph and GCsp respectively.
+
+The combination of the WL and GC probe can be used to break possible degeneracies and really measure the distribution of matter, making the measurement of $\summnu$ through GC probes possible. There is additional information in the cross correlation (XC) of these two probes. As the source galaxies get lensed by the foreground structure that the lensing galaxies trace, the XC becomes very natural. From these probes three probes GCph, WL, and XC, we extract the two point statistics.
+
+Additionally to these probes we additionally add information from redshift space distortions (RSD), cluster access counts, and the cosmic microwave background to further constrain neutrino parameters and break possible degeneracies.
+
+\section{Methodology}
+The forecast is done using Markov chain Monte Carlo (MCMC) methods to go beyond the standard Fisher information (FI) formalism. This is done, as we expect deviations from Gaussian posteriors for the neutrino parameters, as well as to add physical priors edges at a zero neutrino mass.
+
+The validation of our forecast was done in 3 separate steps. In the first step we validated our Einstein--Boltzmann solver (EBS) by performing multiple FI forecasts changing the survey specifications as well as the EBS. For this forecast we used the \cosmicfish code that was validated before within the efforts of the Euclid consortium\cite{ISTF2020}. The two most common EBSs are \camb\cite{2011ascl.soft02026L} and \class\cite{Diego_Blas_2011}. Even though they have been thoroughly validated in the past, we decided to re-do the validation again. This is because \euclid will have unprecedented precision on the measurement of the matter power spectrum and thus we have to be sure that our results are not dependent on the particular code used. Furthermore the \euclid observables will need us to have a good handle on the non-linear corrections to the power spectrum. We performed a thorough analysis of multiple recipes for these non-linear corrections and compared them to N-body simulations. We found that in the presence of massive neutrinos the best comparison to was achieved with the \texttt{HMCode2020} recipe \cite{Mead_2021}. Like this, the \texttt{HMCode2020} recipes within \class and \camb were validated for the first time.
+
+We then formulated a likelihood for \montepython\cite{Audren:2012wb} as an extension to the existing likelihood formulated in \cite{casas2023euclidvalidationmontepythonforecasting}. To perform a robust forecast on the neutrino mass we used particular care to correctly model the measured signal in presence of massive neutrinos. The scale-dependent suppression of growth due to neutrinos makes the galaxy bias in first order a scale dependent quantity. This scale dependence has to be properly handled as it can bias the measured value for $\summnu$ and sensitivity\cite{Vagnozzi_2018}. Furthermore, as neutrinos did not cluster inside of halos, the RSD is driven by cold dark matter and baryonic matter only\cite{Villaescusa_Navarro_2018}. For this reason, the measured signal has to be additionally modified to describe this. In the next step we validated our likelihood doing a FI forecast and comparing our results to the results obtained with \cosmicfish. This was done by computing numerically second order derivatives of the likelihood function.
+
+Finally, we performed a MCMC using our \montepython likelihood to check for the validity of our FI forecast. Any deviations between the two methods could be explained from non-Gaussianities of the posterior as well as from prior effects. With this we were sure that our previous validation was valid also for a MCMC forecast.
+\section{Results}
+
+\bibliographystyle{JHEP}
+\bibliography{my-bib-database}
+
+\end{document}
