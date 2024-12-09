@@ -285,9 +285,9 @@ FUNCTION {format.names}
   s num.names$ 'numnames :=
   numnames 'namesleft :=
     { namesleft #0 > }
-    { s nameptr forname.format.string format.name$ remove.spaces
+    { s nameptr surname.format.string format.name$ 
       duplicate$ empty$ 'skip$ { "~" * } if$
-      s nameptr surname.format.string format.name$ *
+      s nameptr forname.format.string format.name$ *
       s nameptr jnrname.format.string format.name$ *
       't :=
       nameptr #1 >
